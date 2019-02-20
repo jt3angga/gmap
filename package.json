@@ -1,0 +1,37 @@
+{
+  "name": "nextjs",
+  "version": "3.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^3.0.2",
+    "axios": "^0.18.0",
+    "dotenv-webpack": "^1.7.0",
+    "echarts": "^4.1.0",
+    "echarts-for-react": "^2.0.15-beta.0",
+    "express": "^4.16.4",
+    "google-map-react": "^1.1.2",
+    "jss": "latest",
+    "lodash.clonedeep": "^4.5.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
+    "mui-virtualized-table": "^2.1.0",
+    "next": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-jss": "^8.1.0",
+    "react-redux": "^6.0.0",
+    "react-virtualized": "^9.21.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
+  }
+}
