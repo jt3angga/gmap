@@ -200,7 +200,7 @@ class Map extends Component {
       this.state.polyline = new googlemaps.Polyline({
         path: plans,
         geodesic: true,
-        strokeColor: '#56A0D3',
+        strokeColor: '#ef6c00',
         strokeOpacity: 0.7,
         geodesic: true,
         strokeWeight: 2
