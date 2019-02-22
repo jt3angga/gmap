@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import {connect} from 'react-redux';
-import { setGpsIndex, pushChartData, setChartData } from '../store'
+import { setGpsIndex, pushChartData, setChartData, setMapFullyLoaded } from '../store'
 
 const defaultLat = -6.187539
 const defaultLng = 106.734737
@@ -182,6 +182,7 @@ class Map extends Component {
        map: map,
        googlemaps: googlemaps
      });
+     this.props.dispatch(setMapFullyLoaded())
     }
   }
 

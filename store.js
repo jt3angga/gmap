@@ -16,10 +16,12 @@ const initialState = {
   speed: 10,
   polyline: true,
   chartData: [],
-  gpsIndex: 0
+  gpsIndex: 0,
+  mapFullyLoaded: false
 }
 
 export const actionTypes = {
+  SET_MAP_FULLY_LOADED: 'SET_MAP_FULLY_LOADED',
   DRAWER_CLOSE: 'DRAWER_CLOSE',
   DRAWER_OPEN: 'DRAWER_OPEN',
   BOTTOMBAR_CLOSE: 'BOTTOMBAR_CLOSE',
@@ -42,6 +44,10 @@ export const actionTypes = {
 // REDUCERS
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_MAP_FULLY_LOADED:
+      return Object.assign({}, state, {
+        mapFullyLoaded: true,
+      })
     case actionTypes.DRAWER_CLOSE:
       return Object.assign({}, state, {
         drawerOpen: false,
@@ -189,6 +195,10 @@ export const pushChartData = (chartData) => dispatch => {
 
 export const clearChartData = () => dispatch => {
   return dispatch({ type: actionTypes.CLEAR_CHART_DATA })
+}
+
+export const setMapFullyLoaded = (data) => dispatch => {
+  return dispatch({ type: actionTypes.SET_MAP_FULLY_LOADED })
 }
 
 export function initializeStore (initialState = initialState) {

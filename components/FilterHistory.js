@@ -50,6 +50,9 @@ class FilterHistory extends React.Component {
   }
 
   showHistories = () => {
+    if(!this.props.mapFullyLoaded) {
+      return
+    }
     const { from, to } = this.state
 
     if(from > to) {
@@ -145,38 +148,6 @@ class FilterHistory extends React.Component {
         }
       }
 
-      /* if(data.hasOwnProperty((i-1)) && ((data[i].latitude == data[(i-1)].latitude) && (data[i].longitude == data[(i-1)].longitude))) {
-        let s = moment(groupedData[rowG].from);
-        let e = moment(item.date);
-        let duration = e.diff(s,'seconds');
-
-
-        let speed = item.speed == 0 ? 1 : item.speed
-
-        groupedData[rowG].to = item.date
-        groupedData[rowG].speed = speed
-        groupedData[rowG].duration = duration
-      }
-      else {
-        rowG++;
-        let start = groupedData.hasOwnProperty(rowG-1) ? groupedData[rowG-1].to : item.date
-        let s = moment(start);
-        let e = moment(item.date);
-        let duration = e.diff(s,'seconds');
-
-        let speed = item.speed == 0 ? 1 : item.speed
-
-        groupedData[rowG] = {
-          id: rowG, 
-          from: start, 
-          to: item.date, 
-          speed: speed, 
-          lat: parseFloat(item.latitude.split(',').join('')), 
-          lng: parseFloat(item.longitude.split(',').join('')),
-          duration: duration
-        }
-      } */
-
       realData.push({
         id: i,
         date: item.date, 
@@ -238,7 +209,7 @@ class FilterHistory extends React.Component {
         </FormControl>
         <FormControl fullWidth className={classes.form}>
           <Button 
-            disabled={this.state.loading || !this.state.fromValid || !this.state.toValid}
+            disabled={this.state.loading || !this.props.mapFullyLoaded || !this.state.fromValid || !this.state.toValid}
             onClick={this.showHistories} 
             margin="normal" 
             variant="contained" 
@@ -246,16 +217,9 @@ class FilterHistory extends React.Component {
             color="primary" 
             className={classes.margin}
           >
-            {`${this.state.loading ? 'Loading' : 'Show Histories'}`}
+            {`${this.state.loading || !this.props.mapFullyLoaded ? 'Loading' : 'Show Histories'}`}
           </Button>
         </FormControl>
-          {/* <TextField margin="normal" value={from} onChange={this.handleChangeFrom} label="From" />
-          <TextField margin="normal" value={to} onChange={(e) => this.setState({to: e.target.value})} label="To" />
-          <Button disabled={this.state.loading} onClick={this.showHistories} margin="normal" variant="contained" size="large" color="primary" className={classes.margin}>
-           
-            {`${this.state.loading ? 'Loading' : 'Show Histories'}`}
-          </Button>
-        </FormControl>*/}
         <Snackbar
           anchorOrigin={{
             vertical: 'top',
@@ -307,4 +271,10 @@ FilterHistory.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect()(withStyles(styles)(FilterHistory));
+const mapStateToProps = state => {
+  return {
+    mapFullyLoaded: state.mapFullyLoaded
+  }
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(FilterHistory));
