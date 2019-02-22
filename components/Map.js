@@ -264,7 +264,7 @@ class Map extends Component {
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: 'AIzaSyCH1triM4hiocALh_cNE86FEVvZmf9h_-0',
+            key: '/* Google Map Api Key Anda */',
             libraries: ['places', 'drawing', 'geometry'],
             region: 'ID'
           }}

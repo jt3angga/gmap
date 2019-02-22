@@ -1,6 +1,6 @@
 {
-  "name": "nextjs",
-  "version": "3.0.0",
+  "name": "gmap",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
